@@ -1,0 +1,119 @@
+<%- include("../includes/boilerplate.ejs") %>
+<script>
+  let mapToken= "<%=process.env.MAP_TOKEN%>";
+  let coordinates= "<%=singleList.geometry.coordinates%>";
+  let title= "<%=singleList.title%>";
+</script>
+
+<a href="javascript:history.back()" class="show-back-btn"><i class="fa-solid fa-circle-arrow-left" style="font-size: 2em;"></i></a>
+<div class="show-list">
+  <div class="show-title"><%= singleList.title %></div>
+  <p class="listing-owner">Owned by <i><%=singleList.owner.username %> </i></p>
+  <img class="show-img" src="<%= singleList.image.url %>" alt="image" />
+  <div class="show-location-country">
+    <span class="show-loaction"> <%=singleList.location%>,<%=singleList.country %></span>
+  </div>
+  <div class="show-desc"><%= singleList.description %></div>
+  <div class="show-price">
+    &#8377; <%= singleList.price.toLocaleString("en-IN") %>
+  </div>
+
+  <% if(currUser && singleList.owner.username==currUser.username) {%>
+  <div class="edit-del-btn">
+    <button class="show-edit-btn">
+      <a href="/listings/<%=singleList._id%>/edit">Edit this List</a>
+    </button>
+    <form action="/listings/<%=singleList._id%>?_method=DELETE" method="post">
+      <button class="delete-btn">Delete</button>
+    </form>
+  </div>
+  <% } %>
+
+  <% if(currUser) {%>
+    <hr />
+  <div class="review-box">
+    <h3>Leave a Review</h3>
+    <form
+      action="/listings/<%=singleList._id%>/reviews"
+      method="post"
+      class="review-form"
+    >
+      <div>
+        <label for="rating">Rating: </label>
+        <span id="rating-val">0</span>
+      </div>
+
+      <fieldset class="starability-slot">
+        <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+        <input type="radio" id="first-rate1" name="review[rating]" value="1" onchange="{ratingChangeHandler(this.value)}"/>
+        <label for="first-rate1" title="Terrible">1 star</label>
+        <input type="radio" id="first-rate2" name="review[rating]" value="2" onchange="{ratingChangeHandler(this.value)}"/>
+        <label for="first-rate2" title="Not good">2 stars</label>
+        <input type="radio" id="first-rate3" name="review[rating]" value="3" onchange="{ratingChangeHandler(this.value)}"/>
+        <label for="first-rate3" title="Average">3 stars</label>
+        <input type="radio" id="first-rate4" name="review[rating]" value="4" onchange="{ratingChangeHandler(this.value)}"/>
+        <label for="first-rate4" title="Very good">4 stars</label>
+        <input type="radio" id="first-rate5" name="review[rating]" value="5" onchange="{ratingChangeHandler(this.value)}"/>
+        <label for="first-rate5" title="Amazing">5 stars</label>
+      </fieldset>
+
+      <label for="comment">Comment: </label>
+      <textarea
+        name="review[comment]"
+        id="comment"
+        rows="3"
+        placeholder="What's your thought about this place?"
+        required
+      ></textarea>
+      <button type="submit" class="delete-btn review-btn">Submit</button>
+    </form>
+  </div>
+  <% } %>
+
+  <% if(singleList.reviews.length>0) {%>
+    <hr />
+    <h3>All Reviews</h3>
+  <div class="all-reviews">
+    <% for(review of singleList.reviews){ %>
+    <div class="review-card">
+      <div class="review-item">
+          <img src="<%=review.createdBy?.profilephoto?.url%>" alt="" class="nav-profile-photo">
+          <div class="review-createdAt"><%= review.createdAt.toDateString().substr(4)%> , <%= review.createdAt.toLocaleTimeString() %></div>
+      </div>
+ 
+      <div class="review-item">
+        <div class="review-name">@<%= review.createdBy.username%></div>
+        <div>
+          <% for(let a=0; a<review.rating; a++) {%>
+            <i class="fa-solid fa-star"></i>
+            <% } %>
+            <% for(let a=0; a<5-review.rating; a++) {%>
+              <i class="fa-regular fa-star"></i>
+              <% } %>
+          </div>
+      </div>
+
+      <div class="review-comment"><%= review.comment %></div>
+      <div class="review-item">
+        <div class="review-rating"><%= review.rating %> Stars</div>
+        <% if(currUser && currUser.id == review.createdBy.id){%>
+        <form action="/listings/<%= singleList._id%>/reviews/<%= review._id %>?_method=DELETE" method="post">
+          <button type="submit" class=" review-del-btn"><i class="fa-solid fa-trash" style="color: #de0202; font-size: 1.2em;"></i></button>
+        </form>
+        <% } %>
+      </div>
+    </div>
+    <% } %>
+  </div>
+  <% } %>
+
+
+  <hr>
+  <h3>Where you'll be</h3>
+  <div class="map-container">
+    <div id="map"></div>
+  </div>
+</div>
+
+<script src="/js/map.js"></script>
+<%- include("../includes/footer.ejs") %> 

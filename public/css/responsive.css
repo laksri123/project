@@ -1,0 +1,217 @@
+@media screen and (max-width: 1024px) {
+  .show-list {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .card-img {
+    width: 330px;
+    height: 280px;
+  }
+  .nav-search-box {
+    display: none;
+  }
+
+  .post-nav {
+    margin: 0;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tax-btn-box {
+    font-size: 14px;
+    padding: 8px;
+    margin: 0;
+  }
+
+  .post-nav-btn-back {
+    height: 17px;
+    width: 36px;
+  }
+
+  .post-nav-btn-back::before {
+    height: 13px;
+    width: 13px;
+  }
+
+  .postNavBtnTran::before {
+    transform: translateX(19px);
+  }
+
+  .filter-box {
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 18px;
+    padding: 10px;
+  }
+
+  .filter-box i {
+    font-size: 0.8em !important;
+  }
+
+  .userDetails {
+    font-size: 16px;
+    top: 4.2em;
+    height: auto;
+    max-height: 81vh;
+    overflow-x: auto;
+  }
+
+  .transNegative {
+    transform: translateX(-580px);
+  }
+
+  .post-nav-icon-box {
+    display: none;
+  }
+
+  .fa-circle-chevron-left {
+    display: none !important;
+  }
+
+  .new-form,
+  .signup-form-box,
+  .edit-form {
+    width: 50%;
+  }
+
+  .editProfileBox {
+    width: 40%;
+  }
+
+  .extra-options{
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .nav-item {
+    display: none;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  .show-list,
+  .new-form,
+  .edit-form,
+  .signup-form-box,
+  .editProfileBox {
+    width: 90%;
+  }
+
+  .filter-box {
+    display: none;
+  }
+
+  .new-form-price-gst {
+    gap: 1px;
+    flex-wrap: wrap;
+  }
+
+  .country,
+  .gst,
+  .location,
+  .price,
+  #image {
+    width: 100%;
+  }
+
+  .fa-circle-arrow-left {
+    font-size: 1.5em !important;
+  }
+
+  .show-title {
+    font-size: 1.4em;
+  }
+
+  .all-reviews {
+    gap: 0px;
+  }
+
+  .show-img {
+    height: 260px;
+  }
+
+  .edit-img-box {
+    gap: 0px;
+    flex-direction: column-reverse;
+  }
+
+  .error-box {
+    max-width: 90%;
+    width: 80%;
+  }
+
+  .userDetails{
+    width: 65%;
+  }
+
+  .show-loaction{
+    font-size: 17px;
+  }
+
+  .show-price{
+    font-size: 19px;
+  }
+
+  .show-desc, footer{
+    font-size: 15px;
+  }
+
+  .extra-options{
+    gap: 1em;
+  }
+
+}
+
+@media screen and (max-width: 375px) {
+  .card-img {
+    width: 290px;
+    height: 250px;
+  }
+
+  .show-title {
+    font-size: 1.25em;
+  }
+
+  .new-form-box input,
+  .new-form-box textarea,
+  .new-form-box select,
+  .signup-form input,
+  .editProfileForm input,
+  .new-form,
+  .edit-form {
+    font-size: 15px;
+  }
+
+  .percentage-mark{
+    padding: 3px 8px;
+  }
+
+  .userDetails{
+    width: 80%;
+  }
+
+  nav a{
+    font-size: 15px;
+    margin: 0 0.3em;
+  }
+
+  .allCardBox{
+    margin: 1em;
+  }
+
+  .logged-user-box span{
+    font-size: 13px !important;
+  }
+
+  .alert{
+    padding: 1em 2em;
+    margin: 10px auto;
+    font-size: 16px;
+  }
+
+}

@@ -1,0 +1,109 @@
+<%- include("../includes/boilerplate.ejs") %>
+<div class="post-nav">
+
+  <div>
+    <i class="fa-solid fa-circle-chevron-left" style="font-size: 18px; opacity: 0.7; cursor: pointer;visibility: hidden; z-index: 2; margin: 0 5px;" onclick="leftClickHandler()"></i>
+  </div>
+<div class="filter-box">
+  <a href="/search?searchValue=trending" class="filter">
+    <i class="fa-solid fa-fire"></i>
+    <span>Trending</span>
+  </a>
+
+  <a href="/search?searchValue=beach" class="filter">
+    <i class="fa-solid fa-umbrella-beach"></i>
+    <span>Beach</span>
+  </a>
+
+  <a href="/search?searchValue=snow" class="filter">
+    <i class="fa-solid fa-snowflake"></i>
+    <span>Snow</span>
+  </a>
+
+  <a href="/search?searchValue=mountain" class="filter">
+    <i class="fa-solid fa-mountain-sun"></i>
+    <span>Mountain</span>
+  </a>
+
+  <a href="/search?searchValue=tropical" class="filter">
+    <i class="fa-solid fa-tree"></i>
+    <span>Tropical</span>
+  </a>
+
+  <a href="/search?searchValue=lake" class="filter">
+    <i class="fa-solid fa-water"></i>
+    <span>Lake</span>
+  </a>
+
+  <a href="/search?searchValue=bed_and_breakfast" class="filter">
+    <i class="fa-solid fa-mug-saucer"></i>
+    <span>Bed & Breakfasts</span>
+  </a>
+
+  <a href="/search?searchValue=a_frames" class="filter">
+    <i class="fa-solid fa-campground"></i>
+    <span>A-frames</span>
+  </a>
+
+  <a href="/search?searchValue=play" class="filter">
+    <i class="fa-solid fa-table-tennis-paddle-ball"></i>
+    <span>Play</span>
+  </a>
+
+  <a href="/search?searchValue=golfing" class="filter">
+    <i class="fa-solid fa-golf-ball-tee"></i>
+    <span>Golfing</span>
+  </a>
+
+  <a href="/search?searchValue=domes" class="filter">
+    <i class="fa-solid fa-landmark-dome"></i>
+    <span>Domes</span>
+  </a>
+
+  <a href="/search?searchValue=iconic_cities" class="filter">
+    <i class="fa-solid fa-landmark"></i>
+    <span>Iconic cities</span>
+  </a>
+
+  <a href="/search?searchValue=warehouse" class="filter">
+    <i class="fa-solid fa-warehouse"></i>
+    <span>Warehouse</span>
+  </a>
+
+  <a href="/search?searchValue=creative_spaces" class="filter">
+    <i class="fa-solid fa-palette"></i>
+    <span>Creative spaces</span>
+  </a>
+
+  <a href="/search?searchValue=yatch" class="filter">
+    <i class="fa-solid fa-ship"></i>
+    <span>Yatch</span>
+  </a>
+  
+</div>
+<div class="post-nav-icon-box">
+  <i class="fa-solid fa-circle-chevron-right" style="font-size: 18px; opacity: 0.7; cursor: pointer; margin-left:5px ;" onclick="rightClickHandler()"></i>
+</div>
+
+  <div class="tax-btn-box">
+    <span>Display tax values</span>
+    <div class="post-nav-btn-back" onclick="displayTaxClickHandler()"></div>
+  </div>
+
+</div>
+
+<div class="allCardBox">
+  <% for(let list of allListings){ %>
+  <a href="/listings/<%=list._id%>">
+    <div class="card-container">
+      <img class="card-img" src="<%=list.image.url%>" alt="list_image..." />
+      <div class="card-title"><%=list.title%></div>
+      <div class="card-price">
+        &#8377; <%= list.price.toLocaleString("en-IN")%> /night
+        <i class="gstData">+<b><%= list.gst %>% </b>GST</i>
+      </div>
+    </div>
+  </a>
+  <% } %>
+</div>
+<%- include("../includes/footer.ejs") %>

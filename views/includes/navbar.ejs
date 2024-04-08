@@ -1,0 +1,106 @@
+<nav>
+  <div>
+    <a href="#" class="nav-title">WanderLust</a>
+    <a href="/listings" class="nav-item">Explore</a>
+    <a href="/listings/new" class="nav-item">Add your home</a>
+  </div>
+
+  <div class="nav-search-box">
+    <form action="/search" method="get">
+      <input type="text" placeholder="Search destinations" name="searchValue" />
+      <button type="submit" class="nav-search-btn">
+        <i class="fa-solid fa-magnifying-glass" style="margin-right: 3px"></i>
+        <span>Search</span>
+      </button>
+    </form>
+  </div>
+
+  <div class="flex">
+    <% if(!currUser){%>
+    <a href="/login"><b>Login</b></a>
+    <a href="/signup"><b>Signup</b></a>
+    <% } %> <% if(currUser) {%>
+    <div class="logged-user-box" onclick="userClickHandler()">
+      <img
+        src="<%=currUser.profilephoto.url%>"
+        alt=""
+        loading="lazy"
+        class="nav-profile-photo"
+      />
+      <span style="font-size: 14px">@<%=currUser.username%></span>
+    </div>
+    <a href="/logout" class="nav-item">Logout</a>
+    <% } %>
+  </div>
+</nav>
+
+<% if(currUser) {%>
+<div class="userDetails">
+  <div id="user-username">Hello! <b><%= currUser.username %></b> 🙏</div>
+
+  <div class="extra-options">
+    <form action="/search" method="get" class="user-item-search">
+      <input type="text" placeholder="Search locations, categories.." name="searchValue" />
+      <button type="submit" class="add-btn">
+        <i class="fa-solid fa-magnifying-glass" style="margin-right: 3px"></i>
+        <span>Search</span>
+      </button>
+    </form>
+
+    <a href="/listings" class="user-item"
+      >Explore all locations &nbsp; <i class="fa-solid fa-earth-americas"></i
+    ></a>
+
+    <a href="/listings/new" class="user-item"
+      >Add your home &nbsp;<i class="fa-solid fa-plus"></i
+    ></a>
+  </div>
+  <a href="/listings/mylocations" class="user-item">Added Locations</a>
+  <a href="/listings/reviewedlocation" class="user-item">Reviewed Locations</a>
+  <a href="/editprofile" target="_blank" class="user-item"
+    >Edit Your Profile &nbsp;<i
+      class="fa-solid fa-arrow-up-right-from-square"
+    ></i
+  ></a>
+
+  <div class="user-item" onclick="changePasswordBoxClickHandler()">
+    <span>Change Password</span> &nbsp;<i class="fa-solid fa-lock"></i>
+  </div>
+  <form method="post" action="/changePass" class="userDetails-pass">
+    <div style="position: relative">
+      <input
+        type="password"
+        name="userPass"
+        id="userPass"
+        placeholder="Enter current password"
+      />
+      <i
+        class="fa-solid fa-eye"
+        style="font-size: 0.8em"
+        onclick="userPassClickHandler(event)"
+      ></i>
+    </div>
+    <div style="position: relative">
+      <input
+        type="password"
+        name="userNewPass"
+        id="userNewPass"
+        placeholder="Enter new password"
+      />
+      <i
+        class="fa-solid fa-eye"
+        style="font-size: 0.8em"
+        onclick="userNewPassClickHandler(event)"
+      ></i>
+    </div>
+    <button class="add-btn change-btn" onclick="changePassHandler()">
+      Change
+    </button>
+  </form>
+
+  <a href="/signup" class="user-item">Sign-in with other account</a>
+  <a href="/logout" class="user-item"
+    >LogOut &nbsp;<i class="fa-solid fa-gear"></i
+  ></a>
+</div>
+<% } %>

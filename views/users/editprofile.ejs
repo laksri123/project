@@ -1,0 +1,50 @@
+<%- include("../includes/boilerplate.ejs") %>
+<div class="editProfileBox">
+  <div class="profile">
+    <img
+      class="profilephoto"
+      src="<%=user.profilephoto.url%>"
+      alt="profilephoto..."
+    />
+  </div>
+  <form
+    action="/editprofile"
+    method="post"
+    class="editProfileForm"
+    enctype="multipart/form-data"
+  >
+    <h2>
+      <span id="edit-username"><%= user.username %></span>
+      <i class="fa-solid fa-pen-to-square" onclick="editUsername()"></i>
+    </h2>
+    <div id="editUserBox">
+        <label for="editUsername">Edit Username:</label>
+        <input
+          type="text"
+          value="<%= user.username %>"
+          name="editUsername"
+          id="editUsername"
+          onchange="usernameChangeHandler(event)"
+        />
+    </div>
+
+    <label for="editPhoto">Edit Profile Photo:</label>
+    <input
+      type="file"
+      name="editPhoto"
+      id="editPhoto"
+      onchange="previewProfilePhoto()"
+    />
+
+    <label for="editEmail">Edit E-Mail:</label>
+    <input
+      type="email"
+      name="editEmail"
+      id="editEmail"
+      value="<%=user.email %>"
+    />
+    <button class="add-btn signup-btn">Edit</button>
+  </form>
+</div>
+
+<%- include("../includes/footer.ejs") %>

@@ -1,0 +1,23 @@
+<% if(success && success.length){ %>
+<div class="alert-box">
+  <div class="alert alert-success">
+    <%= success %>
+    <i
+      class="fa-solid fa-xmark"
+      style="position: absolute; right: 5px; top: 5px; cursor: pointer"
+      onclick="alertCancelHandler()"
+    ></i>
+  </div>
+</div>
+<% } %> <% if(error && error.length){ %>
+<div class="alert-box">
+  <div class="alert alert-error">
+    <%= error %>
+    <i
+      class="fa-solid fa-xmark"
+      style="position: absolute; right: 10px; top: 10px; cursor: pointer"
+      onclick="alertCancelHandler()"
+    ></i>
+  </div>
+</div>
+<% } %>

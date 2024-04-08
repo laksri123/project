@@ -1,0 +1,108 @@
+<%- include("../includes/boilerplate.ejs") %>
+
+<a href="javascript:history.back()" class="show-back-btn"><i class="fa-solid fa-circle-arrow-left" style="font-size: 2em;"></i></a>
+<h2 style="text-align: center">Add a new location on WanderLust</h2>
+<form
+  action="/listings"
+  method="post"
+  class="new-form"
+  enctype="multipart/form-data"
+>
+  <div class="new-form-box">
+    <label for="title">Title: </label>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      placeholder="Enter title"
+      required
+    />
+  </div>
+
+  <div class="new-form-box">
+    <label for="description">Description: </label>
+    <textarea
+      name="description"
+      id="description"
+      placeholder="Enter full description of the place"
+      rows="5"
+      cols="50"
+    ></textarea>
+  </div>
+
+  <div class="new-form-box">
+    <label for="category">Choose your category:</label>
+    <select name="category" id="category" >
+      <option value="trending">Trending</option>
+      <option value="beach">Beach</option>
+      <option value="snow">Snow</option>
+      <option value="mountain">Mountain</option>
+      <option value="tropical">Tropical</option>
+      <option value="lake">Lake</option>
+      <option value="bed_and_breakfast">Bed & Breakfast</option>
+      <option value="a_frames">A Frames</option>
+      <option value="golfing">Golfing</option>
+      <option value="domes">Domes</option>
+      <option value="iconic_cities">Iconic Cities</option>
+      <option value="warehouse">Warehouse</option>
+      <option value="creative_spaces">Creative Spaces</option>
+      <option value="yatch">Yatch</option>
+    </select>
+  </div>
+
+  <!--   
+  <div class="new-form-box">
+    <label for="image">Image URL/Link: </label>
+    <input type="text" name="image" placeholder="https://abc.png" />
+  </div> -->
+
+  <div style="display: flex; gap:10px; flex-wrap: wrap;">
+    <div class="new-form-box">
+      <label for="image">Upload Image: </label>
+      <input type="file" id="image" name="image" onchange="previewPhoto()" />
+    </div>
+    <img src="#" alt="" id="file-preview" />
+  </div>
+
+  <div class="new-form-price-gst">
+    <div class="new-form-box price">
+      <label for="price">Price: </label>
+      <input type="text" id="price" name="price" placeholder="1200" required />
+    </div>
+
+    <div class="new-form-box gst">
+      <label for="gst">GST in %: </label>
+      <div class="flex" style="align-items: flex-start;justify-content: left;">
+        <input type="number" id="gst" name="gst" placeholder="8" required style="width: 100%;" />
+         <div class="percentage-mark"> % </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="new-form-price-gst">
+  <div class="new-form-box location">
+    <label for="location">Location: </label>
+    <input
+      type="text"
+      id="location"
+      name="location"
+      placeholder="Jaipur, Rajasthan"
+      required
+    />
+  </div>
+  <div class="new-form-box country">
+    <label for="country">Country: </label>
+    <input
+      type="text"
+      id="country"
+      name="country"
+      placeholder="India"
+      required
+    />
+  </div>
+</div>
+
+  <button class="add-btn">Add</button>
+</form>
+<%- include("../includes/footer.ejs") %>

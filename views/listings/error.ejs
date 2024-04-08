@@ -1,0 +1,14 @@
+<%- include("../includes/boilerplate.ejs") %>
+<div class="error">
+  <div class="error-box">
+    <h2 class="err-name"><%=name%>!!</h2>
+    <p class="err-message"><%=message%></p>
+    <% if(name==="ValidationError") {%>
+    <a href="/listings/new"><button>Try Again</button></a>
+    <% } %> <% if(name!=="ValidationError") {%>
+    <a href="/listings"><button>Back to Home</button></a>
+    <% } %>
+  </div>
+</div>
+
+<%- include("../includes/footer.ejs") %>
